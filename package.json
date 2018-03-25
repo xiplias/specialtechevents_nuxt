@@ -1,0 +1,29 @@
+{
+  "name": "specialtechevents-nuxt",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "Anders Borre Hansen <xiplias@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "nuxt": "^1.0.0",
+    "nuxt-bulma-slim": "^0.3.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "compression-webpack-plugin": "^1.1.11",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0",
+    "glob-all": "^3.1.0",
+    "purgecss-webpack-plugin": "^0.22.0"
+  }
+}
