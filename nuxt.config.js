@@ -17,11 +17,17 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: "#3B8070" },
-  modules: ["nuxt-bulma-slim"],
+  modules: ["nuxt-bulma-slim", "@nuxtjs/apollo"],
+  apollo: {
+    clientConfigs: {
+      default: "~/apollo/client-configs/default.js"
+    }
+  },
   /*
   ** Build configuration
   */
   build: {
+    analyze: true,
     extractCSS: true,
     /*
     ** Run ESLint on save

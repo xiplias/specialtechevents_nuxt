@@ -13,8 +13,18 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "nuxt-edge": "*",
-    "nuxt-bulma-slim": "^0.3.2"
+    "@nuxtjs/apollo": "^3.0.5",
+    "apollo-cache-inmemory": "^1.1.12",
+    "apollo-client": "^2.2.8",
+    "apollo-link": "^1.2.1",
+    "apollo-link-http": "^1.5.3",
+    "apollo-link-ws": "^1.0.7",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.8.0",
+    "nuxt": "^1.4.0",
+    "nuxt-bulma-slim": "^0.3.2",
+    "subscriptions-transport-ws": "^0.9.7",
+    "vue-apollo": "^3.0.0-beta.5"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
