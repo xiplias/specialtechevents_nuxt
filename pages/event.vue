@@ -6,9 +6,9 @@
         <span v-if="$apollo.loading">Loading...</span>
       </h2>
       <div class="topInfo">
-        123 people voting | 1201 votes casts | 12 votes confirmed
+        {{totalRumorCount}} votes casts | {{rumorCount}} votes | {{verifiedRumors}} votes verified
       </div>
-      <div class="list">
+      <div class="list" v-for="rumor in rumors" v-bind:key="rumor.id">
         <div class="vote">
           <article class="media">
             <figure class="media-left">
@@ -18,12 +18,12 @@
                     <path d="M7.406 15.422l-1.406-1.406 6-6 6 6-1.406 1.406-4.594-4.594z"></path>
                   </svg>
                 </div>
-                <div class="vote-indicator">12</div>
+                <div class="vote-indicator">{{rumor._votesMeta.count}}</div>
               </div>
             </figure>
             <div class="media-content">
-              <div class="vote-text">New iPad Mini</div>
-              <div class="vote-description">#22 | Created by Anders</div>
+              <div class="vote-text">{{rumor.title}}</div>
+              <div class="vote-description">{{rumor.verified ? 'Verified' : 'Unverified'}} | Added by Anders</div>
             </div>
           </article>
         </div>
@@ -42,7 +42,9 @@ export default {
     top
   },
   data: () => ({
-    Event: {}
+    Event: {
+      rumors: []
+    }
   }),
   apollo: {
     Event: {
@@ -52,8 +54,17 @@ export default {
             id
             name
             startsAt
-            file {
-              url
+            endsAt
+            rumors {
+              id
+              title
+              verified
+              _votesMeta {
+                count
+              }
+              event {
+                startsAt
+              }
             }
           }
         }
@@ -63,6 +74,24 @@ export default {
           id: this.$route.query.id
         };
       }
+    }
+  },
+  computed: {
+    rumors() {
+      return this.Event.rumors;
+    },
+    totalRumorCount() {
+      return this.Event.rumors.reduce((prev, next) => {
+        return prev + next._votesMeta.count;
+      }, 0);
+    },
+    rumorCount() {
+      return this.Event.rumors.length;
+    },
+    verifiedRumors() {
+      return this.Event.rumors.filter(rumor => {
+        return rumor.verified === true;
+      }).length;
     }
   }
 };

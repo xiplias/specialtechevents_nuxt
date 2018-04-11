@@ -11,3 +11,9 @@
     </div>
   </div>
 </template>
+
+<style>
+.navbar-brand {
+  margin-left: -20px;
+}
+</style>
