@@ -15,7 +15,8 @@ module.exports = {
     "nuxt-bulma-slim",
     "@nuxtjs/apollo",
     "@nuxtjs/axios",
-    "@nuxtjs/auth"
+    "@nuxtjs/auth",
+    "@nuxtjs/pwa"
   ],
   apollo: {
     clientConfigs: {
