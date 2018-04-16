@@ -1,9 +1,6 @@
 const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: "specialtechevents-nuxt",
     meta: [
@@ -13,25 +10,29 @@ module.exports = {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
-  /*
-  ** Customize the progress bar color
-  */
   loading: { color: "#3B8070" },
-  modules: ["nuxt-bulma-slim", "@nuxtjs/apollo"],
+  modules: [
+    "nuxt-bulma-slim",
+    "@nuxtjs/apollo",
+    "@nuxtjs/axios",
+    "@nuxtjs/auth"
+  ],
   apollo: {
     clientConfigs: {
       default: "~/apollo/client-configs/default.js"
     }
   },
-  /*
-  ** Build configuration
-  */
+  auth: {
+    strategies: {
+      auth0: {
+        domain: "borre.eu.auth0.com",
+        client_id: "MmlIbeymuksf4XdWCiGcf4jOKds4AgPa"
+      }
+    }
+  },
   build: {
     analyze: true,
     extractCSS: true,
-    /*
-    ** Run ESLint on save
-    */
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({

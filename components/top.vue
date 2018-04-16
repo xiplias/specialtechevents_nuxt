@@ -7,6 +7,11 @@
             Special Tech Events
           </a>
         </div>
+        <div class="navbar-start">
+          <a class="navbar-item" v-on:click="$auth.loginWith('auth0')">
+            Login
+          </a>
+        </div>
       </nav>
     </div>
   </div>
