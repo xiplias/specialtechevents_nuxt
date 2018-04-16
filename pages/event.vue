@@ -28,18 +28,20 @@
           </article>
         </div>
       </div>
+      <rumorForm v-bind:eventId="$route.query.id" />
     </div>
-
   </div>
 </template>
 
 <script>
 import top from "../components/top";
+import rumorForm from "../components/rumor_form";
 import gql from "graphql-tag";
 
 export default {
   components: {
-    top
+    top,
+    rumorForm
   },
   data: () => ({
     Event: {
