@@ -8,7 +8,7 @@
       <div class="topInfo">
         {{totalRumorCount}} votes casts | {{rumorCount}} votes | {{verifiedRumors}} votes verified
       </div>
-      <div class="list" v-for="rumor in rumors" v-bind:key="rumor.id">
+      <div class="list" v-for="(rumor, index) in rumors" v-bind:key="rumor.id">
         <div class="vote">
           <article class="media">
             <figure class="media-left">
@@ -23,7 +23,10 @@
             </figure>
             <div class="media-content">
               <div class="vote-text">{{rumor.title}}</div>
-              <div class="vote-description">{{rumor.verified ? 'Verified' : 'Unverified'}} | Added by Anders</div>
+              <div class="vote-description">#{{index}} | Added by Anders</div>
+            </div>
+            <div class="media-right">
+              <span class="tag is-primary is-medium" v-if="rumor.verified">Verified</span>
             </div>
           </article>
         </div>
