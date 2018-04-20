@@ -96,9 +96,6 @@ export default {
     });
   },
   computed: {
-    rumors() {
-      return this.Event.rumors;
-    },
     totalRumorCount() {
       return this.Event.rumors.reduce((prev, next) => {
         return prev + next._votesMeta.count;
@@ -114,6 +111,11 @@ export default {
     },
     Event() {
       return this.$store.state.currentEvent;
+    },
+    rumors() {
+      return this.Event.rumors.slice(0).sort((a, b) => {
+        return b._votesMeta.count - a._votesMeta.count;
+      });
     }
   }
 };
