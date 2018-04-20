@@ -6,7 +6,33 @@
         <span v-if="$apollo.loading">Loading...</span>
       </h2>
       <div class="topInfo">
-        {{totalRumorCount}} votes casts | {{rumorCount}} votes | {{verifiedRumors}} votes verified
+        <div class="level-left">
+          <nav class="level is-mobile">
+
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="subtitle is-6">{{rumorCount}} rumors</p>
+              </div>
+            </div>
+            <div class="level-item">
+              |
+            </div>
+            <div class="level-item">
+              <div>
+                <p class="subtitle is-6">{{totalRumorCount}} votes casts</p>
+              </div>
+            </div>
+
+            <div class="level-item">
+              |
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="subtitle is-6">{{verifiedRumors}} rumors confirmed</p>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
       <div class="list" v-for="(rumor, index) in rumors" v-bind:key="rumor.id">
         <div class="vote">
@@ -23,10 +49,10 @@
             </figure>
             <div class="media-content">
               <div class="vote-text">{{rumor.title}}</div>
-              <div class="vote-description">#{{index}} | Added by Anders</div>
+              <div class="vote-description">#{{index + 1}} | Added by Anders</div>
             </div>
             <div class="media-right">
-              <span class="tag is-primary is-medium" v-if="rumor.verified">Verified</span>
+              <span class="verfied_tag" v-if="rumor.verified">Confirmed</span>
             </div>
           </article>
         </div>
@@ -105,7 +131,7 @@ export default {
 <style>
 .topInfo,
 .vote-description {
-  color: #999;
+  color: #808080;
 }
 
 .topInfo {
@@ -138,5 +164,17 @@ export default {
 .vote {
   padding: 20px 0;
   border-bottom: 1px #eeeff3 solid;
+}
+
+.verfied_tag {
+  background: #fff;
+  border: 1px #ccc solid;
+  color: #808080;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 2px;
+  font-size: 0.9em;
+  margin-top: 1em;
+  padding: 2px 8px;
 }
 </style>

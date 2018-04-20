@@ -1,24 +1,19 @@
 <template>
-  <div style="border-bottom: 1px #EEEFF3 solid;margin-bottom: 30px;">
-    <div class="column is-three-fifths is-offset-one-fifth">
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item title" href="/">
-            Special Tech Events
-          </a>
-        </div>
-        <div class="navbar-start">
-          <a class="navbar-item" v-on:click="$auth.loginWith('auth0')">
-            Login
-          </a>
-        </div>
-      </nav>
-    </div>
-  </div>
+  <nav class="top">
+
+    <a class="title" href="/">
+      Special Tech Events
+    </a>
+
+  </nav>
+
 </template>
 
 <style>
-.navbar-brand {
-  margin-left: -20px;
+.top {
+  border-bottom: 1px #eeeff3 solid;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 0 0 20px;
 }
 </style>
