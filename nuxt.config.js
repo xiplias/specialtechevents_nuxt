@@ -17,7 +17,7 @@ module.exports = {
   css: ["bulma-timeline/dist/bulma-timeline.min.css"],
   loading: { color: "#3B8070" },
   serverMiddleware: ["./api/auth"],
-  modules: ["nuxt-bulma-slim", "@nuxtjs/axios", "@nuxtjs/auth", "@nuxtjs/pwa"],
+  modules: ["nuxt-bulma-slim", "@nuxtjs/axios", "@nuxtjs/auth"],
   auth: {
     strategies: {
       auth0: {
