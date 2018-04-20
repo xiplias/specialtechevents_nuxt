@@ -2,36 +2,32 @@
   <div>
     <top />
     <div class="column is-three-fifths is-offset-one-fifth">
-      <h2 class="title">{{Event.name}}
-      </h2>
+      <h2 class="title is-3" style="text-align: center">{{Event.name}}</h2>
       <div class="topInfo">
-        <div class="level-left">
-          <nav class="level is-mobile">
+        <nav class="level is-mobile">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="subtitle is-6">{{rumorCount}} rumors</p>
+            </div>
+          </div>
+          <div class="level-item">
+            |
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="subtitle is-6">{{totalRumorCount}} votes</p>
+            </div>
+          </div>
 
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="subtitle is-6">{{rumorCount}} rumors</p>
-              </div>
+          <div class="level-item">
+            |
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="subtitle is-6">{{verifiedRumors}} confirmed</p>
             </div>
-            <div class="level-item">
-              |
-            </div>
-            <div class="level-item">
-              <div>
-                <p class="subtitle is-6">{{totalRumorCount}} votes casts</p>
-              </div>
-            </div>
-
-            <div class="level-item">
-              |
-            </div>
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="subtitle is-6">{{verifiedRumors}} rumors confirmed</p>
-              </div>
-            </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </div>
       <div class="list" v-for="(rumor, index) in rumors" v-bind:key="rumor.id">
         <div class="vote">

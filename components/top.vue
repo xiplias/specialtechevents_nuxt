@@ -1,7 +1,7 @@
 <template>
   <nav class="top">
-    <a class="title" href="/">
-      Special Tech Events
+    <a href="/">
+      <h1 class="title is-4">Special Tech Events</h1>
     </a>
   </nav>
 </template>
