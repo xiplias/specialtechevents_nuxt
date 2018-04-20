@@ -28,7 +28,7 @@ module.exports = {
   },
   build: {
     vendor: ["graphql-fetch"],
-    analyze: true,
+    analyze: false,
     extractCSS: false,
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
