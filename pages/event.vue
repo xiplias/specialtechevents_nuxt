@@ -3,7 +3,6 @@
     <top />
     <div class="column is-three-fifths is-offset-one-fifth">
       <h2 class="title">{{Event.name}}
-        <span v-if="$apollo.loading">Loading...</span>
       </h2>
       <div class="topInfo">
         <div class="level-left">
@@ -65,21 +64,16 @@
 <script>
 import top from "../components/top";
 import rumorForm from "../components/rumor_form";
-import gql from "graphql-tag";
+import graphql from "../lib/graphql";
 
 export default {
   components: {
     top,
     rumorForm
   },
-  data: () => ({
-    Event: {
-      rumors: []
-    }
-  }),
-  apollo: {
-    Event: {
-      query: gql`
+  fetch({ store, query }) {
+    return graphql(
+      `
         query($id: ID!) {
           Event(id: $id) {
             id
@@ -100,12 +94,10 @@ export default {
           }
         }
       `,
-      variables() {
-        return {
-          id: this.$route.query.id
-        };
-      }
-    }
+      { id: query.id }
+    ).then(data => {
+      store.commit("setCurrentEvent", data);
+    });
   },
   computed: {
     rumors() {
@@ -123,6 +115,9 @@ export default {
       return this.Event.rumors.filter(rumor => {
         return rumor.verified === true;
       }).length;
+    },
+    Event() {
+      return this.$store.state.currentEvent;
     }
   }
 };

@@ -2,7 +2,6 @@
   <div>
     <top />
     <div class="column is-three-fifths is-offset-one-fifth">
-      <div v-if="$apollo.loading">Loading...</div>
       <div class="timeline is-centered">
         <!-- <div class="timeline-item is-primary">
           <div class="timeline-marker is-primary"></div>
@@ -11,7 +10,7 @@
             <p>Timeline content - Can include any HTML element</p>
           </div>
         </div> -->
-        <div class="timeline-item" v-for="event in allEvents" v-bind:key="event.id">
+        <div class="timeline-item" v-for="event in allEvents()" v-bind:key="event.id">
           <div v-bind:class="`${event.icon} timeline-marker is-image is-32x32`">
             <img v-bind:src="`/logos/${event.icon}.svg`">
           </div>
@@ -35,24 +34,16 @@
 
 <script>
 import top from "../components/top";
-import gql from "graphql-tag";
+import graphql from "../lib/graphql";
 import format from "date-fns/format";
 
 export default {
   components: {
     top
   },
-  data: () => ({
-    allEvents: []
-  }),
-  methods: {
-    date(date) {
-      return format(date, "D MMMM YYYY");
-    }
-  },
-  apollo: {
-    allEvents: {
-      query: gql`
+  fetch({ store, query }) {
+    return graphql(
+      `
         query {
           allEvents(orderBy: startsAt_DESC) {
             id
@@ -61,7 +52,19 @@ export default {
             startsAt
           }
         }
-      `
+      `,
+      { id: query.id }
+    ).then(data => {
+      console.log(data);
+      store.commit("setEvents", data);
+    });
+  },
+  methods: {
+    date(date) {
+      return format(date, "D MMMM YYYY");
+    },
+    allEvents() {
+      return this.$store.state.events;
     }
   }
 };
