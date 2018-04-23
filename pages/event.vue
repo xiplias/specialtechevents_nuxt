@@ -1,58 +1,60 @@
 <template>
   <div>
     <top />
-    <div class="column is-three-fifths is-offset-one-fifth">
-      <h2 class="title is-3" style="text-align: center">{{Event.name}}</h2>
-      <div class="topInfo">
-        <nav class="level is-mobile">
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="subtitle is-6">{{rumorCount}} rumors</p>
-            </div>
-          </div>
-          <div class="level-item">
-            |
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="subtitle is-6">{{totalRumorCount}} votes</p>
-            </div>
-          </div>
-
-          <div class="level-item">
-            |
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="subtitle is-6">{{verifiedRumors}} confirmed</p>
-            </div>
-          </div>
-        </nav>
-      </div>
-      <div class="list" v-for="(rumor, index) in rumors" v-bind:key="rumor.id">
-        <div class="vote">
-          <article class="media">
-            <figure class="media-left">
-              <div class="vote-bottom">
-                <div class="vote-icon">
-                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M7.406 15.422l-1.406-1.406 6-6 6 6-1.406 1.406-4.594-4.594z"></path>
-                  </svg>
-                </div>
-                <div class="vote-indicator">{{rumor._votesMeta.count}}</div>
+    <div class="container">
+      <div class="column is-three-fifths is-offset-one-fifth">
+        <h2 class="title is-3" style="text-align: center">{{Event.name}}</h2>
+        <div class="topInfo">
+          <nav class="level is-mobile">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="subtitle is-6">{{rumorCount}} rumors</p>
               </div>
-            </figure>
-            <div class="media-content">
-              <div class="vote-text">{{rumor.title}}</div>
-              <div class="vote-description">#{{index + 1}} | Added by Anders</div>
             </div>
-            <div class="media-right">
-              <span class="verfied_tag" v-if="rumor.verified">Confirmed</span>
+            <div class="level-item">
+              |
             </div>
-          </article>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="subtitle is-6">{{totalRumorCount}} votes</p>
+              </div>
+            </div>
+
+            <div class="level-item">
+              |
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="subtitle is-6">{{verifiedRumors}} confirmed</p>
+              </div>
+            </div>
+          </nav>
         </div>
+        <div class="list" v-for="(rumor, index) in rumors" v-bind:key="rumor.id">
+          <div class="vote" v-on:click="$auth.loggedIn">
+            <article class="media">
+              <figure class="media-left">
+                <div class="vote-bottom">
+                  <div class="vote-icon">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M7.406 15.422l-1.406-1.406 6-6 6 6-1.406 1.406-4.594-4.594z"></path>
+                    </svg>
+                  </div>
+                  <div class="vote-indicator">{{rumor._votesMeta.count}}</div>
+                </div>
+              </figure>
+              <div class="media-content">
+                <div class="vote-text">{{rumor.title}}</div>
+                <div class="vote-description">#{{index + 1}} | Added by Anders</div>
+              </div>
+              <div class="media-right">
+                <span class="verfied_tag" v-if="rumor.verified">Confirmed</span>
+              </div>
+            </article>
+          </div>
+        </div>
+        <rumorForm v-bind:eventId="$route.query.id" />
       </div>
-      <rumorForm v-bind:eventId="$route.query.id" />
     </div>
   </div>
 </template>
