@@ -26,6 +26,9 @@ module.exports = {
       }
     }
   },
+  router: {
+    middleware: ["auth"]
+  },
   build: {
     vendor: ["graphql-fetch"],
     analyze: false,

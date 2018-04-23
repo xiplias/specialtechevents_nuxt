@@ -31,7 +31,7 @@
           </nav>
         </div>
         <div class="list" v-for="(rumor, index) in rumors" v-bind:key="rumor.id">
-          <div class="vote" v-on:click="$auth.loggedIn">
+          <div class="vote" v-on:click="$auth.loginWith('auth0')">
             <article class="media">
               <figure class="media-left">
                 <div class="vote-bottom">
