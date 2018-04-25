@@ -3,16 +3,9 @@
     <top />
     <div class="column is-three-fifths is-offset-one-fifth">
       <div class="timeline is-centered">
-        <!-- <div class="timeline-item is-primary">
-          <div class="timeline-marker is-primary"></div>
-          <div class="timeline-content">
-            <p class="heading">January 2016</p>
-            <p>Timeline content - Can include any HTML element</p>
-          </div>
-        </div> -->
         <div class="timeline-item" v-for="event in allEvents()" v-bind:key="event.id">
           <div v-bind:class="`${event.icon} timeline-marker is-image is-32x32`">
-            <img v-bind:src="`/logos/${event.icon}.svg`">
+            <img v-bind:src="`/logos/${event.icon}.svg`" alt="logo">
           </div>
           <div class="timeline-content">
             <p class="heading">{{date(event.startsAt)}}</p>
@@ -21,12 +14,6 @@
             </p>
           </div>
         </div>
-        <!-- <header class="timeline-header">
-          <span class="tag is-primary">2017</span>
-        </header> -->
-      </div>
-      <div v-for="event in allEvents" v-bind:key="event.id">
-
       </div>
     </div>
   </div>

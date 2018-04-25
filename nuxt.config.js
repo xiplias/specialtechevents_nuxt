@@ -3,6 +3,9 @@ const CompressionPlugin = require("compression-webpack-plugin");
 module.exports = {
   head: {
     title: "Special Tech Events",
+    htmlAttrs: {
+      lang: "en"
+    },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
