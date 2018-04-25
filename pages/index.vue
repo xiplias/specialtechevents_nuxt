@@ -55,7 +55,6 @@ export default {
       `,
       { id: query.id }
     ).then(data => {
-      console.log(data);
       store.commit("setEvents", data);
     });
   },
