@@ -31,10 +31,10 @@
           </nav>
         </div>
         <div class="list" v-for="(rumor, index) in rumors" v-bind:key="rumor.id">
-          <div class="vote" v-on:click="$auth.loginWith('auth0')">
+          <div class="vote">
             <article class="media">
               <figure class="media-left">
-                <div class="vote-bottom">
+                <div class="vote-bottom" v-on:click="login">
                   <div class="vote-icon">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                       <path d="M7.406 15.422l-1.406-1.406 6-6 6 6-1.406 1.406-4.594-4.594z"></path>
@@ -48,7 +48,9 @@
                 <div class="vote-description">#{{index + 1}} | Added by Anders</div>
               </div>
               <div class="media-right">
-                <span class="verfied_tag" v-if="rumor.verified">Confirmed</span>
+                <div class="verfied_container">
+                  <span class="verfied_tag" v-if="rumor.verified">Confirmed</span>
+                </div>
               </div>
             </article>
           </div>
@@ -97,6 +99,11 @@ export default {
       store.commit("setCurrentEvent", data);
     });
   },
+  methods: {
+    login() {
+      this.$auth.loginWith("auth0");
+    }
+  },
   computed: {
     totalRumorCount() {
       return this.Event.rumors.reduce((prev, next) => {
@@ -141,6 +148,11 @@ export default {
   width: 40px;
   padding: 5px;
   text-align: center;
+  cursor: pointer;
+}
+
+.vote-bottom:hover {
+  border: 1px #ccc solid;
 }
 
 .vote-icon {
@@ -161,15 +173,27 @@ export default {
   border-bottom: 1px #eeeff3 solid;
 }
 
+.vote .media-right {
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  text-align: right;
+}
+
 .verfied_tag {
   background: #fff;
   border: 1px #ccc solid;
   color: #808080;
   font-size: 1em;
-  font-weight: bold;
+  font-weight: 400;
   border-radius: 2px;
   font-size: 0.9em;
-  margin-top: 1em;
+
   padding: 2px 8px;
+}
+
+.verfied_container {
+  margin-top: 1em;
 }
 </style>
