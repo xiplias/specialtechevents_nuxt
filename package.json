@@ -14,7 +14,7 @@
     "dev-debug": "node --inspect node_modules/.bin/nuxt"
   },
   "dependencies": {
-    "@nuxtjs/auth": "4.2.0",
+    "@nuxtjs/auth": "4.3.0",
     "@nuxtjs/axios": "5.3.1",
     "body-parser": "1.18.2",
     "bulma-timeline": "2.0.1",
