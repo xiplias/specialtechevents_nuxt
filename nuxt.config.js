@@ -20,17 +20,30 @@ module.exports = {
   css: ["bulma-timeline/dist/bulma-timeline.min.css"],
   loading: { color: "#3B8070" },
   serverMiddleware: ["./api/auth"],
-  modules: ["nuxt-bulma-slim", "@nuxtjs/axios", "@nuxtjs/auth"],
+  middleware: ["auth"],
+  modules: [
+    "nuxt-bulma-slim",
+    "@nuxtjs/axios",
+    "@nuxtjs/auth",
+    "@nuxtjs/apollo"
+  ],
   auth: {
     strategies: {
       auth0: {
         domain: "borre.eu.auth0.com",
         client_id: "MmlIbeymuksf4XdWCiGcf4jOKds4AgPa"
       }
+    },
+    redirect: {
+      login: false
+    }
+  },
+  apollo: {
+    clientConfigs: {
+      default: "~/apollo/client-configs/default.js"
     }
   },
   build: {
-    vendor: ["graphql-fetch"],
     analyze: false,
     extractCSS: false,
     extend(config, { isDev, isClient }) {

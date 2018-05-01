@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
+
 export default {
   name: "rumorForm",
   props: ["eventId"],
@@ -23,19 +25,19 @@ export default {
       const title = this.rumor;
       const eventId = this.eventId;
 
-      // this.$apollo.mutate({
-      //   mutation: gql`
-      //     mutation($title: String!, $eventId: ID) {
-      //       createRumor(title: $title, eventId: $eventId) {
-      //         id
-      //       }
-      //     }
-      //   `,
-      //   variables: {
-      //     title,
-      //     eventId
-      //   }
-      // });
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation($title: String!, $eventId: ID) {
+            createRumor(title: $title, eventId: $eventId) {
+              id
+            }
+          }
+        `,
+        variables: {
+          title,
+          eventId
+        }
+      });
     }
   }
 };

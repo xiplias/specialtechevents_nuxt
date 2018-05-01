@@ -3,7 +3,10 @@
     <top />
     <div class="container">
       <div class="column is-three-fifths is-offset-one-fifth">
-        <h2 class="title is-3" style="text-align: center">{{Event.name}}</h2>
+        <h2 class="title is-3" style="text-align: center">
+          <span v-if="$apollo.loading">Loading...</span>
+          {{Event.name}}
+        </h2>
         <div class="topInfo">
           <nav class="level is-mobile">
             <div class="level-item has-text-centered">
@@ -64,16 +67,21 @@
 <script>
 import top from "../components/top";
 import rumorForm from "../components/rumor_form";
-import graphql from "../lib/graphql";
+import gql from "graphql-tag";
 
 export default {
   components: {
     top,
     rumorForm
   },
-  fetch({ store, query }) {
-    return graphql(
-      `
+  data: () => ({
+    Event: {
+      rumors: []
+    }
+  }),
+  apollo: {
+    Event: {
+      query: gql`
         query($id: ID!) {
           Event(id: $id) {
             id
@@ -94,10 +102,12 @@ export default {
           }
         }
       `,
-      { id: query.id }
-    ).then(data => {
-      store.commit("setCurrentEvent", data);
-    });
+      variables() {
+        return {
+          id: this.$route.query.id
+        };
+      }
+    }
   },
   methods: {
     login() {
@@ -117,9 +127,6 @@ export default {
       return this.Event.rumors.filter(rumor => {
         return rumor.verified === true;
       }).length;
-    },
-    Event() {
-      return this.$store.state.currentEvent;
     },
     rumors() {
       return this.Event.rumors.slice(0).sort((a, b) => {

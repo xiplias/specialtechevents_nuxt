@@ -3,7 +3,7 @@
     <top />
     <div class="column is-three-fifths is-offset-one-fifth">
       <div class="timeline is-centered">
-        <div class="timeline-item" v-for="event in allEvents()" v-bind:key="event.id">
+        <div class="timeline-item" v-for="event in allEvents" v-bind:key="event.id">
           <div v-bind:class="`${event.icon} timeline-marker is-image is-32x32`">
             <img v-bind:src="`/logos/${event.icon}.svg`" alt="logo">
           </div>
@@ -21,16 +21,21 @@
 
 <script>
 import top from "../components/top";
-import graphql from "../lib/graphql";
 import format from "date-fns/format";
+import gql from "graphql-tag";
 
 export default {
   components: {
     top
   },
-  fetch({ store, query }) {
-    return graphql(
-      `
+  data() {
+    return {
+      allEvents: []
+    };
+  },
+  apollo: {
+    allEvents: {
+      query: gql`
         query {
           allEvents(orderBy: startsAt_DESC) {
             id
@@ -39,18 +44,12 @@ export default {
             startsAt
           }
         }
-      `,
-      { id: query.id }
-    ).then(data => {
-      store.commit("setEvents", data);
-    });
+      `
+    }
   },
   methods: {
     date(date) {
       return format(date, "D MMMM YYYY");
-    },
-    allEvents() {
-      return this.$store.state.events;
     }
   }
 };
