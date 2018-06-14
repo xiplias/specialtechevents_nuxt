@@ -23,7 +23,7 @@
     "apollo-link-http": "1.5.4",
     "apollo-link-ws": "1.0.8",
     "body-parser": "1.18.2",
-    "bulma-timeline": "2.0.1",
+    "bulma-timeline": "3.0.0",
     "cookie-parser": "1.4.3",
     "cookieparser": "0.1.0",
     "date-fns": "1.29.0",
