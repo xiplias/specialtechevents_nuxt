@@ -36,7 +36,7 @@
     "jwks-rsa": "1.2.1",
     "nuxt": "1.4.0",
     "nuxt-bulma-slim": "0.3.2",
-    "subscriptions-transport-ws": "0.9.8",
+    "subscriptions-transport-ws": "0.9.14",
     "vue-apollo": "3.0.0-beta.5"
   },
   "devDependencies": {
