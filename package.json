@@ -32,7 +32,7 @@
     "graphql": "0.13.2",
     "graphql-fetch": "1.0.1",
     "graphql-tag": "2.9.1",
-    "jsonwebtoken": "8.2.1",
+    "jsonwebtoken": "8.5.1",
     "jwks-rsa": "1.2.1",
     "nuxt": "1.4.0",
     "nuxt-bulma-slim": "0.3.2",
