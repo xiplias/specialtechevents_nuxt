@@ -44,7 +44,7 @@
     "compression-webpack-plugin": "1.1.11",
     "eslint": "4.19.1",
     "eslint-friendly-formatter": "4.0.1",
-    "eslint-loader": "2.0.0",
+    "eslint-loader": "2.2.1",
     "eslint-plugin-vue": "4.5.0",
     "glob-all": "3.1.0",
     "purgecss-webpack-plugin": "0.22.0"
