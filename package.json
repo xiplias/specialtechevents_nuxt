@@ -45,7 +45,7 @@
     "eslint": "4.19.1",
     "eslint-friendly-formatter": "4.0.1",
     "eslint-loader": "2.0.0",
-    "eslint-plugin-vue": "4.5.0",
+    "eslint-plugin-vue": "5.2.3",
     "glob-all": "3.1.0",
     "purgecss-webpack-plugin": "0.22.0"
   },
