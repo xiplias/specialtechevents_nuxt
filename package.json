@@ -37,7 +37,7 @@
     "nuxt": "1.4.0",
     "nuxt-bulma-slim": "0.3.2",
     "subscriptions-transport-ws": "0.9.8",
-    "vue-apollo": "3.0.0-beta.5"
+    "vue-apollo": "3.1.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
